@@ -1,6 +1,5 @@
 tensorflow
 numpy
 streamlit
-PIL
+Image
 requests
-io
