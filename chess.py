@@ -7,7 +7,7 @@ from io import BytesIO
 
 st.set_option('deprecation.showfileUploaderEncoding', False)
 st.title("Image Classifier")
-st.text("Provide URL of flower Image for image classification")
+st.text("Provide URL of Chess Piece Image for image classification")
 
 @st.cache(allow_output_mutation=True)
 def load_model():
@@ -46,4 +46,4 @@ if path is not None:
       st.write(classes[label[0]])    
     st.write("")
     image = Image.open(BytesIO(content))
-    st.image(image, caption='Classifying Bean Image', use_column_width=True)    
+    st.image(image, caption='Classifying Chess Pieces', use_column_width=True)    
