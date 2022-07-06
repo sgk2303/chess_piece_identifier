@@ -32,7 +32,7 @@ def decode_img(image):
   img = scale(img)
   return np.expand_dims(img, axis=0)
 
-path = st.text_input('Enter Image URL to Classify.. ','https://storage.googleapis.com/download.tensorflow.org/example_images/592px-Red_sunflower.jpg')
+path = st.text_input('Enter Image URL to Classify.. ','https://thumbs.dreamstime.com/b/white-chess-knight-piece-background-icon-203800607.jpg')
 image_file = st.file_uploader("Upload Images", type=["png","jpg","jpeg"])
 if path is not None:
     content = requests.get(path).content
@@ -41,6 +41,7 @@ if path is not None:
     with st.spinner('classifying.....'):
       label =np.argmax(model.predict(decode_img(content)),axis=1)
       st.write(np.array(classes))
+      st.write("Accuracy Measure:")
       st.write(model.predict(decode_img(content)))
       st.write(classes[label[0]])    
     st.write("")
