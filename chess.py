@@ -31,23 +31,9 @@ def decode_img(image):
   return np.expand_dims(img, axis=0)
 
 path = st.text_input('Enter Image URL to Classify.. ','https://as2.ftcdn.net/v2/jpg/02/29/00/27/1000_F_229002770_Vl4N0hLmkgXnh9foZgLB1B5hIUAzB6gX.jpg')
-image_file = st.file_uploader("Upload Images", type=["png","jpg","jpeg"])
+
 if path is not None:
     content = requests.get(path).content
-
-    st.write("Predicted Class :")
-    with st.spinner('Classifying.....'):
-      label =np.argmax(model.predict(decode_img(content)),axis=1)
-      st.write(np.array(classes))
-      st.write("Accuracy Measure:")
-      st.write(model.predict(decode_img(content)))
-      st.write(classes[label[0]])    
-    st.write("")
-    image = Image.open(BytesIO(content))
-    st.image(image, caption='Classifying Chess Pieces', use_column_width=True)
-    
-elif image_file is not None:
-    content = requests.get(image_file).content
 
     st.write("Predicted Class :")
     with st.spinner('Classifying.....'):
