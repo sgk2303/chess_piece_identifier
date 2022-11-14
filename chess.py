@@ -45,3 +45,17 @@ if path is not None:
     st.write("")
     image = Image.open(BytesIO(content))
     st.image(image, caption='Classifying Chess Pieces', use_column_width=True)
+    
+elif image_file is not None:
+    content = requests.get(image_file).content
+
+    st.write("Predicted Class :")
+    with st.spinner('Classifying.....'):
+      label =np.argmax(model.predict(decode_img(content)),axis=1)
+      st.write(np.array(classes))
+      st.write("Accuracy Measure:")
+      st.write(model.predict(decode_img(content)))
+      st.write(classes[label[0]])    
+    st.write("")
+    image = Image.open(BytesIO(content))
+    st.image(image, caption='Classifying Chess Pieces', use_column_width=True)
