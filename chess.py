@@ -31,7 +31,7 @@ def decode_img(image):
   return np.expand_dims(img, axis=0)
 
 path = st.text_input('Enter Image URL to Classify.. ','https://as2.ftcdn.net/v2/jpg/02/29/00/27/1000_F_229002770_Vl4N0hLmkgXnh9foZgLB1B5hIUAzB6gX.jpg')
-image_file = st.file_uploader("Upload Images", type=["png","jpg","jpeg"])
+
 if path is not None:
     content = requests.get(path).content
 
