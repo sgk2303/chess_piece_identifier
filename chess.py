@@ -22,9 +22,7 @@ classes=['Bishop', 'King', 'Knight', 'Pawn', 'Queen', 'Rook']
 
 def scale(image):
   image = tf.cast(image, tf.float32)
-  image /= 255.0 # external data norm while training
-  # in our case norm is part of sequential model
-
+  image /= 255.0
   return tf.image.resize(image,[224,224])
 
 def decode_img(image):
@@ -38,7 +36,7 @@ if path is not None:
     content = requests.get(path).content
 
     st.write("Predicted Class :")
-    with st.spinner('classifying.....'):
+    with st.spinner('Classifying.....'):
       label =np.argmax(model.predict(decode_img(content)),axis=1)
       st.write(np.array(classes))
       st.write("Accuracy Measure:")
@@ -46,4 +44,4 @@ if path is not None:
       st.write(classes[label[0]])    
     st.write("")
     image = Image.open(BytesIO(content))
-    st.image(image, caption='Classifying Chess Pieces', use_column_width=True)    
+    st.image(image, caption='Classifying Chess Pieces', use_column_width=True)
