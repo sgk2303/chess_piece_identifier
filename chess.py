@@ -6,7 +6,7 @@ import requests
 from io import BytesIO
 
 st.set_option('deprecation.showfileUploaderEncoding', False)
-st.title("Image Classifier")
+st.title("Chess Piece Identification")
 st.text("Provide URL of Chess Piece Image for image classification")
 
 @st.cache(allow_output_mutation=True)
